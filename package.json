@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "dev:webpack": "next dev --webpack",
-    "build": "next build",
-    "build:webpack": "next build --webpack",
+    "build": "next build --webpack",
+    "build:turbo": "next build --turbo",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run"
