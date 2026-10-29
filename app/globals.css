@@ -1,0 +1,421 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Control Room — design tokens
+   docs/07-design-direction.md, elevated for depth, materiality and craft.
+   ========================================================================== */
+:root {
+  --bg: #f8faff;
+  --surface: #ffffff;
+  --surface-2: #f0f4ff;
+  --surface-3: #e0e7ff;
+  --border: #e0e7ff;
+  --border-strong: #c7d2fe;
+  --text: #0f172a;
+  --muted: #475569;
+  --muted-2: #64748b;
+  --accent: #4f46e5;
+  --accent-ink: #ffffff;
+  --accent-2: #06b6d4;
+  --accent-purple: #9333ea;
+  --accent-emerald: #10b981;
+  --sheen: rgba(0, 0, 0, 0.03);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-2: var(--accent-2);
+
+  --radius-card: 18px;
+  --radius-panel: 24px;
+
+  /* Geist when installed locally, else the closest system grotesk/mono. */
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo,
+    Consolas, "Liberation Mono", monospace;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+html {
+  color-scheme: light;
+  background: var(--bg);
+  /* No CSS smooth scrolling: Lenis owns the scroll position. */
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01" on, "cv01" on;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+  letter-spacing: -0.032em;
+}
+
+h1 {
+  letter-spacing: -0.042em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Thin, quiet scrollbar that matches the console aesthetic */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+  border: 2px solid var(--bg);
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Materiality — grain, sheen, depth
+   ========================================================================== */
+
+/* Film grain: subtle organic paper feel in light mode */
+.noise-layer {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  mix-blend-mode: multiply;
+}
+
+/* 1px specular line across the top edge of a panel. */
+.sheen-top {
+  position: relative;
+}
+.sheen-top::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8) 22%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.8) 78%,
+    transparent
+  );
+  pointer-events: none;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+/* Inner rim light / soft shadow for elevated cards */
+.rim {
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.04),
+    0 16px 36px -12px rgba(15, 23, 42, 0.08);
+}
+
+/* Panel with clean surface background */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+}
+
+/* ==========================================================================
+   Backdrops
+   ========================================================================== */
+
+/* Faint engineering grid in clean slate */
+.grid-field {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 40%, #000 30%, transparent 78%);
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 40%, #000 30%, transparent 78%);
+}
+
+/* Dot canvas — echoes an architect grid */
+.canvas-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(15, 23, 42, 0.06) 1px,
+    transparent 0
+  );
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 45%, #000 25%, transparent 80%);
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 45%, #000 25%, transparent 80%);
+}
+
+/* Bespoke architectural ambient downlight */
+.aurora-mesh {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -12%, rgba(37, 99, 235, 0.12), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 90% 15%, rgba(2, 132, 199, 0.08), transparent 60%);
+}
+
+/* Soft light source behind the hero */
+.beam {
+  background: radial-gradient(
+    closest-side,
+    rgba(37, 99, 235, 0.10),
+    rgba(2, 132, 199, 0.03) 55%,
+    transparent 100%
+  );
+  filter: blur(28px);
+}
+
+.beam-cool {
+  background: radial-gradient(
+    closest-side,
+    rgba(2, 132, 199, 0.06),
+    transparent 100%
+  );
+  filter: blur(40px);
+}
+
+/* ==========================================================================
+   Interaction — cursor spotlight
+   ========================================================================== */
+.spotlight {
+  --mx: 50%;
+  --my: 0%;
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    320px circle at var(--mx) var(--my),
+    rgba(37, 99, 235, 0.35),
+    rgba(37, 99, 235, 0.05) 42%,
+    transparent 68%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 380ms ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.spotlight:hover::after,
+.spotlight:focus-within::after {
+  opacity: 1;
+}
+
+.spotlight > .spotlight-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    340px circle at var(--mx) var(--my),
+    rgba(37, 99, 235, 0.03),
+    transparent 62%
+  );
+  opacity: 0;
+  transition: opacity 380ms ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.spotlight:hover > .spotlight-fill {
+  opacity: 1;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Motion
+   ========================================================================== */
+@keyframes pulse-travel {
+  from {
+    stroke-dashoffset: 160;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.edge-pulse {
+  stroke-dasharray: 10 150;
+  animation: pulse-travel 2.6s linear infinite;
+}
+
+@keyframes packet-x {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(var(--travel, 100%));
+    opacity: 0;
+  }
+}
+.packet {
+  animation: packet-x 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.blink {
+  animation: blink 2.4s ease-in-out infinite;
+}
+
+@keyframes ping-soft {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+.ping-soft {
+  animation: ping-soft 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-x 42s linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(400%);
+  }
+}
+.scanline {
+  animation: scanline 4.5s linear infinite;
+}
+
+/* Link underline that draws in from the left. */
+.link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-line:hover {
+  background-size: 100% 1px;
+}
+
+.shader-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Reduced motion — everything resolves to its final state instantly.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .edge-pulse {
+    animation: none;
+    stroke-dasharray: none;
+    opacity: 0.35;
+  }
+  .packet,
+  .ping-soft,
+  .blink,
+  .marquee-track,
+  .scanline {
+    animation: none !important;
+  }
+}

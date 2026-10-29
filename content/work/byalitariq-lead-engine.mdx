@@ -1,0 +1,26 @@
+## Snapshot
+
+This site is my own first client. Every form on it, from the contact page to the free audit, runs through one lead system I built with Next.js and n8n. This page is a live build log: results will be added here once there's real data to show.
+
+## Challenge
+
+A freelancer's site usually sends form entries to an inbox and hopes someone replies in time. Replies take hours, there's no record of where a lead came from, and every new lead magnet needs its own form and its own logic.
+
+## Solution
+
+One endpoint handles every form:
+
+1. **The form** validates input in the browser with the same schema the server uses.
+2. **`POST /api/lead`** rate-limits requests, checks a Cloudflare Turnstile token, drops honeypot bots and validates again with zod.
+3. **The n8n webhook** receives the clean lead with a secret header, so the URL is never exposed to the browser.
+4. **The workflow** de-duplicates by email, stores the lead with its source and tags, sends a personal reply and alerts me.
+
+Adding a new lead magnet means adding a new `source` value, not a new backend.
+
+## Stack & how it runs
+
+Next.js on Vercel, zod for validation, Cloudflare Turnstile for spam, n8n for the workflow and Resend for email. Running cost is a few dollars a month at this volume.
+
+## Results
+
+Coming soon. I'll publish response time, conversion per lead magnet and booked calls once the site has been live long enough to measure honestly.
