@@ -28,28 +28,28 @@ export function Hero() {
         <div className="mx-auto max-w-3xl text-center">
           {/* Ali Tariq Portrait with Executive Bezel */}
           <div className="mb-8 mt-2 flex flex-col items-center">
-            <div className="relative flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center rounded-full p-1 border-2 border-accent/40 bg-white shadow-[0_12px_36px_-6px_rgba(37,99,235,0.22)] transition-transform duration-300 hover:scale-105">
+            <div className="relative flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center rounded-full p-1 border-2 border-accent/40 bg-surface shadow-[0_12px_36px_-6px_rgba(39,43,20,0.18)] transition-transform duration-300 hover:scale-105">
               <img
                 src="/img/ali-tariq-portrait.png"
                 alt="Ali Tariq"
-                className="h-full w-full rounded-full object-cover bg-white"
+                className="h-full w-full rounded-full object-cover bg-surface"
               />
               <span className="absolute bottom-1 right-1 flex h-4 w-4">
-                <span className="ping-soft absolute inline-flex h-full w-full rounded-full bg-emerald-500" />
-                <span className="relative inline-flex h-4 w-4 rounded-full border-2 border-white bg-emerald-500" />
+                <span className="ping-soft absolute inline-flex h-full w-full rounded-full bg-accent" />
+                <span className="relative inline-flex h-4 w-4 rounded-full border-2 border-surface bg-accent" />
               </span>
             </div>
-            <div className="mt-3.5 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-white/90 px-3.5 py-1 font-mono text-[11px] text-slate-600 shadow-sm backdrop-blur-md">
-              <span className="font-semibold text-slate-900">Ali Tariq</span>
-              <span className="text-slate-400">/</span>
+            <div className="mt-3.5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1 font-mono text-[11px] text-muted shadow-sm backdrop-blur-md">
+              <span className="font-semibold text-text">Ali Tariq</span>
+              <span className="text-muted-2">/</span>
               <span>AI Automation &amp; Systems Engineer · Lahore, PK</span>
             </div>
           </div>
 
           {/* Headline B with Solid Authoritative Accent */}
-          <h1 className="text-[2.6rem] font-bold leading-[1.02] tracking-[-0.045em] text-slate-900 sm:text-6xl md:text-[4.25rem]">
+          <h1 className="text-[2.6rem] font-bold leading-[1.02] tracking-[-0.045em] text-text sm:text-6xl md:text-[4.25rem]">
             I build the AI systems that run your{" "}
-            <span className="text-accent">online business.</span>
+            <span className="text-accent underline decoration-accent/30 decoration-wavy decoration-2 underline-offset-8">online business.</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted text-pretty sm:text-lg">

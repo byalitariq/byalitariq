@@ -53,10 +53,10 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full px-3 pt-3 sm:px-6 sm:pt-4">
       <div
         className={cn(
-          "sheen-top rim mx-auto flex h-14 max-w-5xl items-center justify-between rounded-full border border-indigo-100/90 bg-white/90 px-4 backdrop-blur-xl transition-all duration-300 sm:h-15 sm:px-5",
+          "sheen-top rim mx-auto flex h-14 max-w-5xl items-center justify-between rounded-full border border-border bg-surface/90 px-4 backdrop-blur-xl transition-all duration-300 sm:h-15 sm:px-5",
           scrolled
-            ? "border-indigo-200/90 bg-white/95 shadow-[0_12px_36px_-10px_rgba(79,70,229,0.12)]"
-            : "shadow-[0_4px_20px_-4px_rgba(79,70,229,0.06)]",
+            ? "border-border-strong bg-surface/95 shadow-md"
+            : "shadow-sm",
         )}
       >
         {/* Brand */}
@@ -64,16 +64,16 @@ export function Header() {
           href="/"
           className="group flex items-center gap-2.5 font-semibold text-text transition-colors hover:text-accent"
         >
-          <span className="flex h-7 w-7 items-center justify-center rounded-full border border-indigo-200 bg-indigo-50 font-mono text-xs font-bold text-indigo-600 transition-transform duration-200 group-hover:scale-105 group-hover:border-indigo-400">
+          <span className="flex h-7 w-7 items-center justify-center rounded-full border border-border-strong bg-surface-2 font-mono text-xs font-bold text-accent transition-transform duration-200 group-hover:scale-105 group-hover:border-accent">
             AT
           </span>
-          <span className="text-sm font-semibold tracking-tight text-slate-900 sm:text-base">
+          <span className="text-sm font-semibold tracking-tight text-text sm:text-base">
             {SITE.name}
           </span>
-          <span className="hidden items-center gap-1.5 rounded-full border border-emerald-200/80 bg-emerald-50/80 px-2.5 py-0.5 font-mono text-[10px] text-emerald-700 md:inline-flex">
+          <span className="hidden items-center gap-1.5 rounded-full border border-border bg-surface-2 px-2.5 py-0.5 font-mono text-[10px] text-muted md:inline-flex">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="ping-soft absolute inline-flex h-full w-full rounded-full bg-emerald-500" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              <span className="ping-soft absolute inline-flex h-full w-full rounded-full bg-muted" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-muted" />
             </span>
             <span>AVAILABLE</span>
           </span>
@@ -82,7 +82,7 @@ export function Header() {
         {/* Desktop segmented nav */}
         <nav
           aria-label="Main"
-          className="hidden items-center gap-0.5 rounded-full border border-indigo-100 bg-slate-100/80 p-1 text-xs font-medium text-slate-600 md:flex"
+          className="hidden items-center gap-0.5 rounded-full border border-border bg-surface-2 p-1 text-xs font-medium text-muted md:flex"
         >
           {NAV_LINKS.map((link) => {
             const isActive =
@@ -94,8 +94,8 @@ export function Header() {
                 className={cn(
                   "rounded-full px-3 py-1 transition-all duration-200 hover:text-text",
                   isActive
-                    ? "bg-surface-3 text-text shadow-sm"
-                    : "text-muted hover:bg-surface-3/50",
+                    ? "bg-surface text-text shadow-sm font-semibold"
+                    : "text-muted hover:bg-surface/50 hover:text-text",
                 )}
               >
                 {link.label}

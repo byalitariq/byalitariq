@@ -9,15 +9,15 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-accent text-white hover:bg-blue-700 shadow-[0_4px_16px_rgba(37,99,235,0.28)] hover:shadow-[0_8px_24px_rgba(37,99,235,0.38)] active:scale-[0.98] font-semibold transition-all",
+          "bg-accent text-accent-ink hover:bg-[#2b3017] shadow-sm font-semibold active:scale-[0.98] transition-all",
         secondary:
-          "bg-white text-slate-800 border border-indigo-100 hover:border-indigo-200 hover:bg-indigo-50/50 shadow-sm",
+          "bg-surface-2 text-text border border-border hover:bg-surface-3 shadow-sm",
         ghost:
-          "text-slate-600 hover:text-slate-900 hover:bg-indigo-50/60",
+          "text-muted hover:text-text hover:bg-surface-2/60",
         outline:
-          "border border-indigo-200/90 text-slate-800 bg-white hover:border-indigo-400 hover:bg-indigo-50/50 shadow-sm",
+          "border border-border-strong text-text bg-surface hover:border-accent hover:bg-surface-2 shadow-sm",
         subtle:
-          "bg-white/90 text-slate-600 hover:text-slate-900 border border-slate-200 shadow-sm",
+          "bg-surface text-muted hover:text-text border border-border shadow-sm",
       },
       size: {
         sm: "h-8 px-3 text-xs rounded",

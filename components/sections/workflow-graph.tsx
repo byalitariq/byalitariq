@@ -136,17 +136,17 @@ export function WorkflowGraph() {
   const currentStepData = PIPELINE_STEPS[selectedStep];
 
   return (
-    <div className="sheen-top rim relative mx-auto w-full max-w-4xl overflow-hidden rounded-[22px] border border-indigo-100/90 bg-white/95 p-4 sm:p-6 shadow-[0_20px_50px_-15px_rgba(79,70,229,0.08)] backdrop-blur-xl">
+    <div className="sheen-top rim relative mx-auto w-full max-w-4xl overflow-hidden rounded-[22px] border border-border bg-surface p-4 sm:p-6 shadow-sm backdrop-blur-xl">
       {/* Console top bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-indigo-100/80 pb-3 text-xs font-mono text-slate-600">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-3 text-xs font-mono text-muted">
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
-            <span className="ping-soft absolute inline-flex h-full w-full rounded-full bg-emerald-500" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            <span className="ping-soft absolute inline-flex h-full w-full rounded-full bg-accent" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
           </span>
-          <span className="font-semibold text-slate-900">Live System Walkthrough</span>
-          <span className="text-slate-300">/</span>
-          <span className="hidden sm:inline-block text-slate-500">Click any step or run the simulation</span>
+          <span className="font-semibold text-text">Live System Walkthrough</span>
+          <span className="text-muted-2">/</span>
+          <span className="hidden sm:inline-block text-muted">Click any step or run the simulation</span>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
@@ -155,20 +155,20 @@ export function WorkflowGraph() {
             onClick={runSimulation}
             disabled={isRunning}
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[11px] font-semibold text-white transition-all duration-200",
+              "inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[11px] font-semibold text-accent-ink transition-all duration-200",
               isRunning
                 ? "bg-accent/60 cursor-wait"
-                : "bg-accent hover:bg-blue-700 active:scale-95 shadow-[0_4px_16px_rgba(37,99,235,0.25)]",
+                : "bg-accent hover:bg-[#2b3017] active:scale-95 shadow-sm",
             )}
           >
             {isRunning ? (
               <>
-                <RotateCcw className="h-3 w-3 animate-spin text-white" />
+                <RotateCcw className="h-3 w-3 animate-spin text-accent-ink" />
                 <span>Simulating…</span>
               </>
             ) : (
               <>
-                <Play className="h-3 w-3 fill-white text-white" />
+                <Play className="h-3 w-3 fill-accent-ink text-accent-ink" />
                 <span>See it in action</span>
               </>
             )}
@@ -293,15 +293,15 @@ export function WorkflowGraph() {
       </div>
 
       {/* Interactive Walkthrough Inspector */}
-      <div className="mt-4 overflow-hidden rounded-xl border border-indigo-100 bg-gradient-to-br from-white via-indigo-50/20 to-sky-50/30 shadow-sm">
-        <div className="flex items-center justify-between border-b border-indigo-100 bg-white px-3.5 py-2.5 text-[11px] font-mono text-slate-600">
+      <div className="mt-4 overflow-hidden rounded-xl border border-border bg-surface-2/60 shadow-sm">
+        <div className="flex items-center justify-between border-b border-border bg-surface px-3.5 py-2.5 text-[11px] font-mono text-muted">
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-slate-900 font-semibold">
+            <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+            <span className="text-text font-semibold">
               Live Walkthrough · {currentStepData.name}
             </span>
           </div>
-          <span className="rounded bg-emerald-100 px-2 py-0.5 text-[10px] font-mono text-emerald-800 font-semibold">
+          <span className="rounded bg-surface-3 px-2 py-0.5 text-[10px] font-mono text-accent font-semibold">
             Active System
           </span>
         </div>

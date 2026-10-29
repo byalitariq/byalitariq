@@ -5,21 +5,19 @@
    docs/07-design-direction.md, elevated for depth, materiality and craft.
    ========================================================================== */
 :root {
-  --bg: #f8faff;
-  --surface: #ffffff;
-  --surface-2: #f0f4ff;
-  --surface-3: #e0e7ff;
-  --border: #e0e7ff;
-  --border-strong: #c7d2fe;
-  --text: #0f172a;
-  --muted: #475569;
-  --muted-2: #64748b;
-  --accent: #4f46e5;
-  --accent-ink: #ffffff;
-  --accent-2: #06b6d4;
-  --accent-purple: #9333ea;
-  --accent-emerald: #10b981;
-  --sheen: rgba(0, 0, 0, 0.03);
+  --bg: #ede1c8;
+  --surface: #f7f4ec;
+  --surface-2: #e4d7ba;
+  --surface-3: #dad0b6;
+  --border: rgba(39, 43, 20, 0.16);
+  --border-strong: rgba(39, 43, 20, 0.32);
+  --text: #272b14;
+  --muted: #5a6330;
+  --muted-2: #768045;
+  --accent: #3b4120;
+  --accent-ink: #ede1c8;
+  --accent-2: #8a964a;
+  --sheen: rgba(255, 255, 255, 0.5);
 }
 
 @theme inline {
@@ -156,26 +154,26 @@ html.lenis body {
 /* Inner rim light / soft shadow for elevated cards */
 .rim {
   box-shadow:
-    0 1px 3px 0 rgba(0, 0, 0, 0.04),
-    0 16px 36px -12px rgba(15, 23, 42, 0.08);
+    0 1px 3px 0 rgba(39, 43, 20, 0.05),
+    0 20px 36px -12px rgba(39, 43, 20, 0.10);
 }
 
 /* Panel with clean surface background */
 .panel {
   background: var(--surface);
   border: 1px solid var(--border);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 3px 0 rgba(39, 43, 20, 0.04);
 }
 
 /* ==========================================================================
    Backdrops
    ========================================================================== */
 
-/* Faint engineering grid in clean slate */
+/* Faint engineering grid in olive ink */
 .grid-field {
   background-image:
-    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(39, 43, 20, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(39, 43, 20, 0.06) 1px, transparent 1px);
   background-size: 64px 64px;
   -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 40%, #000 30%, transparent 78%);
   mask-image: radial-gradient(ellipse 75% 60% at 50% 40%, #000 30%, transparent 78%);
@@ -185,7 +183,7 @@ html.lenis body {
 .canvas-grid {
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgba(15, 23, 42, 0.06) 1px,
+    rgba(39, 43, 20, 0.08) 1px,
     transparent 0
   );
   background-size: 26px 26px;
@@ -196,16 +194,16 @@ html.lenis body {
 /* Bespoke architectural ambient downlight */
 .aurora-mesh {
   background:
-    radial-gradient(ellipse 80% 50% at 50% -12%, rgba(37, 99, 235, 0.12), transparent 70%),
-    radial-gradient(ellipse 60% 40% at 90% 15%, rgba(2, 132, 199, 0.08), transparent 60%);
+    radial-gradient(ellipse 80% 50% at 50% -12%, rgba(90, 99, 48, 0.14), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 90% 15%, rgba(138, 150, 74, 0.10), transparent 60%);
 }
 
 /* Soft light source behind the hero */
 .beam {
   background: radial-gradient(
     closest-side,
-    rgba(37, 99, 235, 0.10),
-    rgba(2, 132, 199, 0.03) 55%,
+    rgba(90, 99, 48, 0.12),
+    rgba(90, 99, 48, 0.03) 55%,
     transparent 100%
   );
   filter: blur(28px);
@@ -214,7 +212,7 @@ html.lenis body {
 .beam-cool {
   background: radial-gradient(
     closest-side,
-    rgba(2, 132, 199, 0.06),
+    rgba(138, 150, 74, 0.08),
     transparent 100%
   );
   filter: blur(40px);
@@ -237,8 +235,8 @@ html.lenis body {
   padding: 1px;
   background: radial-gradient(
     320px circle at var(--mx) var(--my),
-    rgba(37, 99, 235, 0.35),
-    rgba(37, 99, 235, 0.05) 42%,
+    rgba(90, 99, 48, 0.32),
+    rgba(90, 99, 48, 0.04) 42%,
     transparent 68%
   );
   -webkit-mask:
@@ -262,7 +260,7 @@ html.lenis body {
   border-radius: inherit;
   background: radial-gradient(
     340px circle at var(--mx) var(--my),
-    rgba(37, 99, 235, 0.03),
+    rgba(90, 99, 48, 0.04),
     transparent 62%
   );
   opacity: 0;

@@ -10,7 +10,7 @@ import { SmoothScroll } from "@/components/providers/smooth-scroll";
 import { NoiseOverlay } from "@/components/ui/noise-overlay";
 
 export const viewport: Viewport = {
-  themeColor: "#f8fafc",
+  themeColor: "#ede1c8",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,

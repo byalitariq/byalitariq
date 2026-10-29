@@ -64,23 +64,23 @@ export function ProblemOutcome() {
                   </span>
                 </div>
 
-                <div className="flex items-start gap-3 border-t border-indigo-100 p-5 sm:p-6 md:col-span-6 md:border-l md:border-t-0 md:border-indigo-100 bg-gradient-to-r from-white via-indigo-50/20 to-sky-50/30">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                <div className="flex items-start gap-3 border-t border-border p-5 sm:p-6 md:col-span-6 md:border-l md:border-t-0 md:border-border bg-gradient-to-r from-surface to-surface-2/60">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                   <div className="min-w-0 flex-1">
                     <div className="flex items-start justify-between gap-3">
-                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-indigo-600 font-bold">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent font-bold">
                         With the system running
                       </span>
-                      <span className="shrink-0 rounded-md border border-indigo-200 bg-white px-2 py-0.5 text-right font-mono shadow-sm">
-                        <span className="block text-sm font-bold leading-none text-indigo-600">
+                      <span className="shrink-0 rounded-md border border-border bg-surface px-2 py-0.5 text-right font-mono shadow-sm">
+                        <span className="block text-sm font-bold leading-none text-accent">
                           <AnimatedCounter value={item.metric} />
                         </span>
-                        <span className="mt-0.5 block text-[9px] uppercase tracking-wide text-slate-500 font-semibold">
+                        <span className="mt-0.5 block text-[9px] uppercase tracking-wide text-muted font-semibold">
                           {item.metricLabel}
                         </span>
                       </span>
                     </div>
-                    <p className="mt-1.5 text-sm font-semibold leading-relaxed text-slate-900">
+                    <p className="mt-1.5 text-sm font-semibold leading-relaxed text-text">
                       {item.after}
                     </p>
                   </div>

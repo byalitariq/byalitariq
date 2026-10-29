@@ -55,9 +55,9 @@ export function ServicesGrid() {
             >
               <SpotlightCard
                 className={cn(
-                  "h-full p-5 transition-all duration-300 hover:-translate-y-1 sm:p-6 bg-white border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(79,70,229,0.06)] hover:shadow-[0_12px_32px_-6px_rgba(79,70,229,0.14)] hover:border-indigo-300",
-                  isFeatured && "bg-gradient-to-br from-indigo-50/40 via-white to-sky-50/30 border-indigo-200",
-                  isCarePlan && "sm:col-span-2 bg-gradient-to-br from-emerald-50/30 via-white to-teal-50/20 border-emerald-200/80",
+                  "h-full p-5 transition-all duration-300 hover:-translate-y-1 sm:p-6 bg-surface border-border shadow-sm hover:shadow-md hover:border-border-strong",
+                  isFeatured && "bg-gradient-to-br from-surface via-surface to-surface-2 border-border-strong",
+                  isCarePlan && "sm:col-span-2 bg-gradient-to-br from-surface to-surface-2/80 border-border",
                 )}
               >
                 <div className="flex h-full flex-col justify-between gap-6">
@@ -71,28 +71,28 @@ export function ServicesGrid() {
                       >
                         <Icon className="h-5 w-5" />
                       </div>
-                      <span className="font-mono text-[10px] tracking-[0.16em] text-slate-400 font-semibold">
+                      <span className="font-mono text-[10px] tracking-[0.16em] text-muted-2 font-semibold">
                         /0{index + 1}
                       </span>
                     </div>
 
-                    <h3 className="mt-4 text-lg font-bold tracking-tight text-slate-900">
+                    <h3 className="mt-4 text-lg font-bold tracking-tight text-text">
                       {service.title}
                     </h3>
-                    <p className="mt-1.5 max-w-md text-sm leading-relaxed text-slate-600">
+                    <p className="mt-1.5 max-w-md text-sm leading-relaxed text-muted">
                       {service.short}
                     </p>
 
                     <ul
                       className={cn(
-                        "mt-5 grid gap-2 border-t border-slate-100 pt-4",
+                        "mt-5 grid gap-2 border-t border-border/50 pt-4",
                         isFeatured ? "sm:grid-cols-2" : "",
                       )}
                     >
                       {service.deliverables.slice(0, isFeatured ? 4 : 3).map((item) => (
                         <li
                           key={item}
-                          className="flex items-start gap-2 text-xs leading-relaxed text-slate-700"
+                          className="flex items-start gap-2 text-xs leading-relaxed text-text"
                         >
                           <Check className={cn("mt-0.5 h-3.5 w-3.5 shrink-0", theme.checkColor)} />
                           <span>{item}</span>
@@ -101,18 +101,18 @@ export function ServicesGrid() {
                     </ul>
                   </div>
 
-                  <div className="flex items-end justify-between gap-3 border-t border-slate-100 pt-4">
+                  <div className="flex items-end justify-between gap-3 border-t border-border/50 pt-4">
                     <div>
-                      <span className="block font-mono text-[10px] uppercase tracking-[0.14em] text-indigo-600 font-semibold">
+                      <span className="block font-mono text-[10px] uppercase tracking-[0.14em] text-accent font-semibold">
                         Delivery
                       </span>
-                      <span className="font-mono text-xs font-semibold text-slate-900">
+                      <span className="font-mono text-xs font-semibold text-text">
                         Fixed Scope · Custom Built
                       </span>
                     </div>
                     <Link
                       href={`/services/${service.slug}`}
-                      className="group/link inline-flex items-center gap-1 font-mono text-[11px] font-semibold text-indigo-600 hover:text-indigo-800"
+                      className="group/link inline-flex items-center gap-1 font-mono text-[11px] font-semibold text-accent hover:underline"
                     >
                       <span className="link-line">Details</span>
                       <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
